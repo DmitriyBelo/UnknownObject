@@ -14,6 +14,7 @@ namespace Turrel
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int key_index = 0;
             GameObject NewObj = new GameObject();
 
 
@@ -26,14 +27,16 @@ namespace Turrel
             {
                 if (p != null)
                 {
-                    this.richTextBox1.AppendText("\r\n" + p.obj_name); 
+                    this.richTextBox1.AppendText("\r\n" + " " + key_index + ") " + p.obj_name);
                 }
+                key_index++;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             string RemoveObjName = this.textBox1.Text;
+            int key_index = 0;
 
             string nextObjName = ObjTools.GetNextObj(RemoveObjName, TargetList);
 
@@ -47,8 +50,9 @@ namespace Turrel
                 {
                     if (p != null)
                     {
-                        this.richTextBox1.AppendText("\r\n" + p.obj_name);
+                        this.richTextBox1.AppendText("\r\n" + " "+key_index+") "+ p.obj_name);
                     }
+                    key_index++;
                 }
 
                 
