@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Turrel
@@ -106,6 +107,39 @@ namespace Turrel
             {
                 MessageBox.Show(err.Message);
                 return "";
+            }
+        }
+
+        /// <summary>
+        /// Sort objects list 
+        /// </summary>
+        /// <param name="TargetList"></param>
+        public static void SortObjs (GameObject[] TargetList)
+        {
+
+            List<GameObject> TempObjList = new List<GameObject>(); 
+
+            try
+            {
+                for(int k = 0; k<TargetList.Length; k++)
+                {
+                    if(TargetList[k] != null)
+                    {
+                        TempObjList.Add(TargetList[k]);
+                        TargetList[k] = null;
+                    }
+                }
+
+               for (int k = 0; k < TempObjList.Count; k++)
+                {
+                    TargetList[k] = TempObjList[k];
+                }
+
+                TempObjList.Clear();
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
             }
         }
     }

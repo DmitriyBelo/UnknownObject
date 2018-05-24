@@ -42,20 +42,19 @@ namespace Turrel
 
             if (!String.IsNullOrEmpty(RemoveObjName))
             {
-                ObjTools.RemoveTarget(RemoveObjName, TargetList);
-
-
-                this.richTextBox1.Clear();
-                foreach (var p in TargetList)
+                if (ObjTools.RemoveTarget(RemoveObjName, TargetList))
                 {
-                    if (p != null)
+                    ObjTools.SortObjs(TargetList);
+                    this.richTextBox1.Clear();
+                    foreach (var p in TargetList)
                     {
-                        this.richTextBox1.AppendText("\r\n" + " "+key_index+") "+ p.obj_name);
+                        if (p != null)
+                        {
+                            this.richTextBox1.AppendText("\r\n" + " " + key_index + ") " + p.obj_name);
+                        }
+                        key_index++;
                     }
-                    key_index++;
-                }
-
-                
+                }              
                 this.textBox1.Text = "";
             }
         }
